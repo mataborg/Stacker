@@ -76,19 +76,19 @@ services:
       - 5055:5055
     restart: unless-stopped
 
-  prowlarr:
-    image: lscr.io/linuxserver/prowlarr:develop
-    container_name: prowlarr
-    environment:
-      - PUID=13006
-      - PGID=13000
-      - UMASK=002
-      - TZ=Europe/London
-    volumes:
-      - /nfs/prowlarr/config:/config
-    ports:
-      - 9696:9696
-    restart: unless-stopped
+  # prowlarr:
+  #   image: lscr.io/linuxserver/prowlarr:develop
+  #   container_name: prowlarr
+  #   environment:
+  #     - PUID=13006
+  #     - PGID=13000
+  #     - UMASK=002
+  #     - TZ=Europe/London
+  #   volumes:
+  #     - /nfs/prowlarr/config:/config
+  #   ports:
+  #     - 9696:9696
+  #   restart: unless-stopped
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
