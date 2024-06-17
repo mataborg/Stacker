@@ -28,8 +28,8 @@ services:
       - PUID=16001
       - PGID=16000
       - TZ=Europe/London
-      - SPOTIFY_PUBLIC_FILE=/run/secrets/your_spotify_public
-      - SPOTIFY_SECRET_FILE=/run/secrets/your_spotify_secret
+      - SPOTIFY_PUBLIC=/run/secrets/your_spotify_public
+      - SPOTIFY_SECRET=/run/secrets/your_spotify_secret
       - CORS=all
       - MONGO_ENDPOINT=mongodb://db:27017/your_spotify
     ports:
