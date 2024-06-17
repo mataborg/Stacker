@@ -1,9 +1,9 @@
 ---
 version: "3.8"
+
 services:
   radarr:
     image: lscr.io/linuxserver/radarr:latest
-    container_name: radarr
     environment:
       - PUID=13002
       - PGID=13000
@@ -15,11 +15,9 @@ services:
       - radarr:/config
     ports:
       - 7878:7878
-    restart: unless-stopped
 
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
-    container_name: sonarr
     environment:
       - PUID=13001
       - PGID=13000
@@ -31,7 +29,6 @@ services:
       - sonarr:/config
     ports:
       - 8989:8989
-    restart: unless-stopped
 
   # lidarr:
   #   image: lscr.io/linuxserver/lidarr:latest
@@ -50,7 +47,6 @@ services:
 
   readarr:
     image: lscr.io/linuxserver/readarr:develop
-    container_name: readarr
     environment:
       - PUID=13004
       - PGID=13000
@@ -61,11 +57,9 @@ services:
       - readarr:/config
     ports:
       - 8787:8787
-    restart: unless-stopped
   
   overseerr:
     image: lscr.io/linuxserver/overseerr:latest
-    container_name: overseerr
     environment:
       - PUID=13005
       - PGID=13000
@@ -74,7 +68,6 @@ services:
       - /nfs/overseerr/config:/config
     ports:
       - 5055:5055
-    restart: unless-stopped
 
   # prowlarr:
   #   image: lscr.io/linuxserver/prowlarr:develop
@@ -92,7 +85,6 @@ services:
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
     environment:
       - PUID=13007
       - PGID=13000
@@ -106,11 +98,9 @@ services:
       - 20909:20909
       - 6881:6881
       - 6881:6881/udp
-    restart: unless-stopped
 
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest
-    container_name: sabnzbd
     environment:
       - PUID=13009
       - PGID=13000
@@ -121,7 +111,6 @@ services:
       - /arr/usenet:/data/usenet
     ports:
       - 10027:8080
-    restart: unless-stopped
 
 volumes:
   radarr:

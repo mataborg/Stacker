@@ -15,8 +15,6 @@ services:
     volumes:
       - /nfs/mongospotify/db:/data/db
       - /nfs/mongospotify/config:/data/configdb
-    restart: unless-stopped
-
 
   app:
     image: lscr.io/linuxserver/your_spotify:latest
@@ -36,7 +34,6 @@ services:
     ports:
       - 10040:80
       - 10041:443
-    restart: unless-stopped
 
 volumes:
   your_spotify:

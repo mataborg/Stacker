@@ -17,7 +17,6 @@ services:
       - TZ=Europe/London
     volumes:
       - /nfs/mariadbnextcloud/config:/config
-    restart: unless-stopped
 
   app:
     image: lscr.io/linuxserver/nextcloud:latest
@@ -41,7 +40,6 @@ services:
       - /nfs/nextcloud/config:/config
     ports:
       - 10025:443
-    restart: unless-stopped
 
 volumes:
   nextcloud:
