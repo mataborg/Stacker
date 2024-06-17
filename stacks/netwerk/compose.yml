@@ -1,23 +1,7 @@
 ---
 version: '3.8'
 
-services: 
-  duckdns:
-    image: lscr.io/linuxserver/duckdns:latest
-    container_name: duckdns
-    secrets:
-      - duckdns_token
-    environment:
-      - PUID=12001
-      - PGID=12000
-      - TZ=Europe/London
-      - SUBDOMAINS=zenbasedtea
-      - TOKEN=/run/secrets/duckdns_token
-      - LOG_FILE=false
-    volumes:
-      - /nfs/duckdns/config:/config
-    restart: unless-stopped
-
+services:
   traefik:
     image: traefik:latest
     container_name: traefik
@@ -59,12 +43,10 @@ services:
       - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.local.zenbasedtea.xyz"
       - "traefik.http.routers.traefik-secure.service=api@internal"
 
-networks:
-  proxy:
-    external: true
+# networks:
+#   proxy:
+#     external: true
 
 secrets:
-  duckdns_token:
-    external: true
   traefik_token:
     external: true
