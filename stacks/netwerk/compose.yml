@@ -7,8 +7,6 @@ services:
     container_name: traefik
     secrets:
       - traefik_token
-    security_opt:
-      - no-new-privileges:true
     environment:
       - PUID=12002
       - PGID=12000
@@ -20,8 +18,6 @@ services:
       - /nfs/traefik/data/traefik.yml:/traefik.yml:ro
       - /nfs/traefik/data/acme.json:/acme.json
       - /nfs/traefik/data/config.yml:/config.yml:ro
-    networks:
-      - proxy
     ports:
       - 80:80
       - 443:443
@@ -42,10 +38,6 @@ services:
       - "traefik.http.routers.traefik-secure.tls.domains[0].main=local.zenbasedtea.xyz"
       - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.local.zenbasedtea.xyz"
       - "traefik.http.routers.traefik-secure.service=api@internal"
-
-# networks:
-#   proxy:
-#     external: true
 
 secrets:
   traefik_token:
