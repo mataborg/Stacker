@@ -13,8 +13,8 @@ services:
       - PGID=16000
       - TZ=Europe/London
     volumes:
-      - /nfs/mongospotify/db:/data/db
-      - /nfs/mongospotify/config:/data/configdb
+      - mongodb_spotify:/data/db
+      - mongoconfig_spotify:/data/configdb
 
   app:
     image: lscr.io/linuxserver/your_spotify:latest
@@ -38,6 +38,8 @@ services:
 volumes:
   your_spotify:
   db:
+  mongodb_spotify:
+  mongoconfig_spotify:
 
 secrets:
   your_spotify_public:
