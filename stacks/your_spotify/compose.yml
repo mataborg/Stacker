@@ -8,7 +8,7 @@ services:
       - mongospotify_root
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=/run/secrets/mongospotify_root
+      - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongospotify_root
       - PUID=16002
       - PGID=16000
       - TZ=Europe/London
@@ -28,8 +28,8 @@ services:
       - PUID=16001
       - PGID=16000
       - TZ=Europe/London
-      - SPOTIFY_PUBLIC=/run/secrets/your_spotify_public
-      - SPOTIFY_SECRET=/run/secrets/your_spotify_secret
+      - SPOTIFY_PUBLIC_FILE=/run/secrets/your_spotify_public
+      - SPOTIFY_SECRET_FILE=/run/secrets/your_spotify_secret
       - CORS=all
       - MONGO_ENDPOINT=mongodb://db:27017/your_spotify
     ports:
