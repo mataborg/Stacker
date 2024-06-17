@@ -1,0 +1,54 @@
+---
+version: '3.8'
+
+services:
+  db:
+    image: lscr.io/linuxserver/mariadb:latest
+    secrets:
+      - marianextcloud_root
+      - marianextcloud_sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=/run/secrets/marianextcloud_root
+      - MYSQL_PASSWORD=/run/secrets/marianextcloud_sql
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - PUID=14002
+      - PGID=14000
+      - TZ=Europe/London
+    volumes:
+      - /nfs/mariadbnextcloud/config:/config
+    restart: unless-stopped
+
+  app:
+    image: lscr.io/linuxserver/nextcloud:latest
+    secrets:
+      - marianextcloud_sql
+    links:
+      - db
+    environment:
+      - MYSQL_PASSWORD=/run/secrets/marianextcloud_sql
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db
+      - PUID=14001
+      - PGID=14000
+      - TZ=Europe/London
+      - DOCKER_MODS=linuxserver/mods:universal-package-install
+      - INSTALL_PACKAGES=samba-client
+      - NEXTCLOUD_TRUSTED_DOMAINS='nextcloud.local.zenbasedtea.xyz','192.168.2.18'
+    volumes:
+      - /nfs/nextcloud/data:/data
+      - /nfs/nextcloud/config:/config
+    ports:
+      - 10025:443
+    restart: unless-stopped
+
+volumes:
+  nextcloud:
+  db:
+
+secrets:
+  marianextcloud_root:
+     external: true
+  marianextcloud_sql:
+     external: true

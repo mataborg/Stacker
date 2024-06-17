@@ -1,0 +1,70 @@
+---
+version: '3.8'
+
+services: 
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: duckdns
+    secrets:
+      - duckdns_token
+    environment:
+      - PUID=12001
+      - PGID=12000
+      - TZ=Europe/London
+      - SUBDOMAINS=zenbasedtea
+      - TOKEN=/run/secrets/duckdns_token
+      - LOG_FILE=false
+    volumes:
+      - /nfs/duckdns/config:/config
+    restart: unless-stopped
+
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    secrets:
+      - traefik_token
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - PUID=12002
+      - PGID=12000
+      - CF_API_EMAIL=logancowan@live.com
+      - CF_DNS_API_TOKEN=/run/secrets/traefik_token
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /nfs/traefik/data/traefik.yml:/traefik.yml:ro
+      - /nfs/traefik/data/acme.json:/acme.json
+      - /nfs/traefik/data/config.yml:/config.yml:ro
+    networks:
+      - proxy
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.entrypoints=http"
+      - "traefik.http.routers.traefik.rule=Host(`traefik-dashboard.local.zenbasedtea.xyz`)"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$apr1$$mDDb0UoC$$R7WIgIxOcjxMbkRNnWqls/"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
+      - "traefik.http.routers.traefik-secure.entrypoints=https"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik-dashboard.local.zenbasedtea.xyz`)"
+      - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
+      - "traefik.http.routers.traefik-secure.tls=true"
+      - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].main=local.zenbasedtea.xyz"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.local.zenbasedtea.xyz"
+      - "traefik.http.routers.traefik-secure.service=api@internal"
+
+networks:
+  proxy:
+    external: true
+
+secrets:
+  duckdns_token:
+    external: true
+  traefik_token:
+    external: true

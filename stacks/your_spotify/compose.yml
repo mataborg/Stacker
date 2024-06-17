@@ -1,0 +1,51 @@
+---
+version: '3.8'
+
+services:
+  db:
+    image: mongo:latest
+    secrets:
+      - mongospotify_root
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=/run/secrets/mongospotify_root
+      - PUID=16002
+      - PGID=16000
+      - TZ=Europe/London
+    volumes:
+      - /nfs/mongospotify/db:/data/db
+      - /nfs/mongospotify/config:/data/configdb
+    restart: unless-stopped
+
+
+  app:
+    image: lscr.io/linuxserver/your_spotify:latest
+    links:
+      - db
+    secrets:
+      - your_spotify_public
+      - your_spotify_secret
+    environment:
+      - PUID=16001
+      - PGID=16000
+      - TZ=Europe/London
+      - SPOTIFY_PUBLIC=/run/secrets/your_spotify_public
+      - SPOTIFY_SECRET=/run/secrets/your_spotify_secret
+      - CORS=all
+      - MONGO_ENDPOINT=mongodb://db:27017/your_spotify
+    ports:
+      - 10040:80
+      - 10041:443
+    restart: unless-stopped
+
+volumes:
+  your_spotify:
+  db:
+
+secrets:
+  your_spotify_public:
+     external: true
+  your_spotify_secret:
+     external: true
+  mongospotify_root:
+     external: true

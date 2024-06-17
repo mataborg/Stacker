@@ -1,0 +1,54 @@
+---
+version: '3.8'
+
+services:
+  db:
+    image: lscr.io/linuxserver/mariadb:latest
+    secrets:
+      - mariavwdn_root
+      - mariavwdn_sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=/run/secrets/mariavwdn_root
+      - MYSQL_PASSWORD=/run/secrets/mariavwdn_sql
+      - MYSQL_DATABASE=vaultwarden
+      - MYSQL_USER=vaultwarden
+      - PUID=15002
+      - PGID=15000
+      - TZ=Europe/London
+    volumes:
+      - /nfs/mariadbvtwn/config:/config
+    restart: unless-stopped
+
+  app:
+    image: vaultwarden/server:latest
+    links:
+      - db
+    secrets:
+      - vaultwardendb_url
+      - vaultwarden_token
+    environment:
+      - DATABASE_URL_FILE=/run/secrets/vaultwardendb_url
+      - PUID=15001
+      - PGID=15000
+      - TZ=Europe/London
+      - ADMIN_TOKEN_FILE=/run/secrets/vaultwarden_token
+    volumes:
+      - /nfs/vaultwarden/data:/data
+      - /nfs/vaultwarden/config:/config
+    ports:
+      - 10035:80
+    restart: unless-stopped
+
+volumes:
+  vaultwarden:
+  db:
+
+secrets:
+  mariavwdn_root:
+     external: true
+  mariavwdn_sql:
+     external: true
+  vaultwarden_token:
+     external: true
+  vaultwardendb_url:
+     external: true
