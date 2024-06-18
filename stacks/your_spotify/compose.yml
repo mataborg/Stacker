@@ -32,8 +32,6 @@ services:
       - 10041:443
 
 volumes:
-  your_spotify:
-  db:
   mongodb_spotify:
   mongoconfig_spotify:
 
