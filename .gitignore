@@ -1,2 +1,4 @@
 secrets/
-stacks/your_spotify/
+env/
+traefik/
+

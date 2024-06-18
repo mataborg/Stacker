@@ -1,0 +1,44 @@
+---
+version: '3.8'
+
+services:
+  db:
+    image: mongo:latest
+    environment:
+      - PUID=16002
+      - PGID=16000
+      - TZ=Europe/London
+    volumes:
+      - mongodb_spotify:/data/db
+      - mongoconfig_spotify:/data/configdb
+
+  app:
+    image: lscr.io/linuxserver/your_spotify:latest
+    links:
+      - db
+    secrets:
+      - your_spotify_public
+      - your_spotify_secret
+    environment:
+      - APP_URL=https://192.168.2.18:10041
+      - PUID=16001
+      - PGID=16000
+      - TZ=Europe/London
+      - FILE__SPOTIFY_PUBLIC=/run/secrets/your_spotify_public
+      - FILE__SPOTIFY_SECRET=/run/secrets/your_spotify_secret
+      - MONGO_ENDPOINT=mongodb://db:27017/your_spotify
+    ports:
+      - 10040:80
+      - 10041:443
+
+volumes:
+  your_spotify:
+  db:
+  mongodb_spotify:
+  mongoconfig_spotify:
+
+secrets:
+  your_spotify_public:
+     external: true
+  your_spotify_secret:
+     external: true
