@@ -20,7 +20,7 @@ services:
       - your_spotify_public
       - your_spotify_secret
     environment:
-      - APP_URL=https://192.168.2.18:10041
+      - APP_URL=http://192.168.2.18:10040
       - PUID=16001
       - PGID=16000
       - TZ=Europe/London
