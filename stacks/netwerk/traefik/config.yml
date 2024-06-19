@@ -1,0 +1,359 @@
+---
+http:
+  routers:
+
+    pve1:
+      entryPoints:
+        - "https"
+      rule: "Host(`pve1.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: pve1
+
+    piholelxc:
+      entryPoints:
+        - "https"
+      rule: "Host(`piholelxc.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: piholelxc
+
+    piholezero:
+      entryPoints:
+        - "https"
+      rule: "Host(`piholezero.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: piholezero
+
+    pikvm:
+      entryPoints:
+        - "https"
+      rule: "Host(`pikvm.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: pikvm
+
+    truenas:
+      entryPoints:
+        - "https"
+      rule: "Host(`truenas.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: truenas
+
+    plex:
+      entryPoints:
+        - "https"
+      rule: "Host(`plex.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: plex
+
+    portainer:
+      entryPoints:
+        - "https"
+      rule: "Host(`portainer.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: portainer
+
+    sabnzbd:
+      entryPoints:
+        - "https"
+      rule: "Host(`sabnzbd.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: sabnzbd
+
+    qbittorrent:
+      entryPoints:
+        - "https"
+      rule: "Host(`qbittorrent.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: qbittorrent
+
+#    lidarr:
+#      entryPoints:
+#        - "https"
+#      rule: "Host(`lidarr.local.zenbasedtea.xyz`)"
+#      middlewares:
+#        - default-headers
+#        - https-redirectscheme
+#      tls: {}
+#      service: lidarr
+
+    sonarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`sonarr.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+
+      service: sonarr
+
+    readarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`readarr.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: readarr
+
+    radarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`radarr.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: radarr
+
+    router:
+      entryPoints:
+        - "https"
+      rule: "Host(`router.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: router
+
+    heimdall:
+      entryPoints:
+        - "https"
+      rule: "Host(`heimdall.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: heimdall
+
+    nextcloud:
+      entryPoints:
+        - "https"
+      rule: "Host(`nextcloud.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: nextcloud
+
+    overseerr:
+      entryPoints:
+        - "https"
+      rule: "Host(`overseerr.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: overseerr
+
+    vaultwarden:
+      entrypoints:
+        - "https"
+      rule: "Host(`vaultwarden.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: vaultwarden
+
+    fedora:
+      entrypoints:
+        - "https"
+      rule: "Host(`fedora.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: fedora
+
+    spotify:
+      entrypoints:
+        - "https"
+      rule: "Host(`spotify.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: spotify
+
+  services:
+
+    pve1:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.2.11:8006"
+        passHostHeader: true
+
+    piholelxc:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.14/admin"
+        passHostHeader: true
+
+    piholezero:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.16/admin"
+        passHostHeader: true
+
+    portainer:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.2.18:9443"
+        passHostHeader: true
+
+    pikvm:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.2.12"
+        passHostHeader: true
+
+    truenas:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.2.15"
+        passHostHeader: true
+
+    plex:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.15:32400"
+        passHostHeader: true
+
+    sabnzbd:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:10027"
+        passHostHeader: true
+
+    qbittorrent:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:20909"
+        passHostHeader: true
+
+#    lidarr:
+#      loadBalancer:
+#        servers:
+#          - url: "http://192.168.2.18:8686"
+#        passHostHeader: true
+
+    sonarr:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:8989"
+        passHostHeader: true
+
+    radarr:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:7878"
+        passHostHeader: true
+
+    readarr:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:8787"
+        passHostHeader: true
+
+    router:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.2.1:8443"
+        passHostHeader: true
+
+    heimdall:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.2.18:10015"
+        passHostHeader: true
+
+    nextcloud:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.2.18:10025"
+        passHostHeader: true
+
+    overseerr:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:5055"
+        passHostHeader: true
+
+    vaultwarden:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:10035"
+        passHostHeader: true
+
+    fedora:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.2.18:9090"
+        passHostHeader: true
+
+    spotify:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:10040"
+        passHostHeader: true
+
+  middlewares:
+
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+    default-headers:
+      headers:
+        frameDeny: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+        customFrameOptionsValue: SAMEORIGIN
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+
+    default-whitelist:
+      ipWhiteList:
+        sourceRange:
+        - "10.0.0.0/8"
+        - "192.168.0.0/16"
+        - "172.16.0.0/12"
+
+    secured:
+      chain:
+        middlewares:
+        - default-whitelist
+        - default-headers
