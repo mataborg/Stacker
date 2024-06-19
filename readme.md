@@ -6,6 +6,6 @@ This repo contains my personal compose files for my homelab, modified for docker
 
 Updating Traefik config:
 
-'''
+```
 curl -O --output-dir /nfs/traefik/data https://raw.githubusercontent.com/mataborg/Stacker/main/stacks/netwerk/traefik/config.yml
-'''
+```
