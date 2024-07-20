@@ -33,7 +33,6 @@ services:
       - PUID=15001
       - PGID=15000
       - TZ=Europe/London
-      - FILE__ADMIN_TOKEN=/run/secrets/vaultwarden_token
       - SMTP_HOST=smtp.gmail.com
       - SMTP_FROM_FILE=/run/secrets/smtp_username
       - SMTP_PORT=587
@@ -55,8 +54,6 @@ secrets:
   mariavwdn_root:
      external: true
   mariavwdn_sql:
-     external: true
-  vaultwarden_token:
      external: true
   vaultwardendb_url:
      external: true
