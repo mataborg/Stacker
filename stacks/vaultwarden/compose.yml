@@ -26,20 +26,12 @@ services:
     secrets:
       - vaultwardendb_url
       - vaultwarden_token
-      - smtp_username
-      - smtp_password
     environment:
       - DATABASE_URL_FILE=/run/secrets/vaultwardendb_url
       - PUID=15001
       - PGID=15000
       - TZ=Europe/London
       - ADMIN_TOKEN_FILE=/run/secrets/vaultwarden_token
-      - SMTP_HOST=smtp.gmail.com
-      - SMTP_FROM=/run/secrets/smtp_username
-      - SMTP_PORT=587
-      - SMTP_SECURITY=starttls
-      - SMTP_USERNAME=/run/secrets/smtp_username
-      - SMTP_PASSWORD=/run/secrets/smtp_password
     volumes:
       - /nfs/vaultwarden/data:/data
       - /nfs/vaultwarden/config:/config
@@ -59,8 +51,4 @@ secrets:
   vaultwarden_token:
      external: true
   vaultwardendb_url:
-     external: true
-  smtp_username:
-     external: true
-  smtp_password:
      external: true
