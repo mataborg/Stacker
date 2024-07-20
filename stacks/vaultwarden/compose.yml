@@ -35,7 +35,7 @@ services:
       - TZ=Europe/London
       - ADMIN_TOKEN_FILE=/run/secrets/vaultwarden_token
       - SMTP_HOST=smtp.gmail.com
-      - SMTP_FROM=/run/secrets/smtp_username
+      - SMTP_FROM_FILE=/run/secrets/smtp_username
       - SMTP_PORT=587
       - SMTP_SECURITY=starttls
       - SMTP_USERNAME=/run/secrets/smtp_username
