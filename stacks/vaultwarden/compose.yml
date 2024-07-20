@@ -25,7 +25,6 @@ services:
       - db
     secrets:
       - vaultwardendb_url
-      - vaultwarden_token
       - smtp_username
       - smtp_password
     environment:
