@@ -25,6 +25,7 @@ services:
       - db
     secrets:
       - vaultwardendb_url
+      - vaultwarden_domain
       - smtp_username
       - smtp_password
     environment:
@@ -32,6 +33,7 @@ services:
       - PUID=15001
       - PGID=15000
       - TZ=Europe/London
+      - DOMAIN_FILE=/run/secrets/vaultwarden_domain
       - SMTP_HOST=smtp.gmail.com
       - SMTP_FROM_FILE=/run/secrets/smtp_username
       - SMTP_PORT=587
@@ -59,4 +61,6 @@ secrets:
   smtp_username:
      external: true
   smtp_password:
+     external: true
+  vaultwarden_domain:
      external: true
