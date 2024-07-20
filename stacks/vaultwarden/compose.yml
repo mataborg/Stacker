@@ -38,8 +38,8 @@ services:
       - SMTP_FROM_FILE=/run/secrets/smtp_username
       - SMTP_PORT=587
       - SMTP_SECURITY=starttls
-      - SMTP_USERNAME=/run/secrets/smtp_username
-      - SMTP_PASSWORD=/run/secrets/smtp_password
+      - SMTP_USERNAME_FILE=/run/secrets/smtp_username
+      - SMTP_PASSWORD_FILE=/run/secrets/smtp_password
     volumes:
       - /nfs/vaultwarden/data:/data
       - /nfs/vaultwarden/config:/config
