@@ -7,7 +7,7 @@ services:
     environment:
       - PUID=16002
       - PGID=16000
-      - TZ=Europe/London
+      - TZ=America/Boise
     volumes:
       - mongodb_spotify:/data/db
       - mongoconfig_spotify:/data/configdb
@@ -23,7 +23,7 @@ services:
       - APP_URL=https://spotify.local.zenbasedtea.xyz
       - PUID=16001
       - PGID=16000
-      - TZ=Europe/London
+      - TZ=America/Boise
       - FILE__SPOTIFY_PUBLIC=/run/secrets/your_spotify_public
       - FILE__SPOTIFY_SECRET=/run/secrets/your_spotify_secret
       - MONGO_ENDPOINT=mongodb://db:27017/your_spotify

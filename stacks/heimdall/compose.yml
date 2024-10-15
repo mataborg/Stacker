@@ -6,7 +6,7 @@ services:
     environment:
       - PUID=11001
       - PGID=11000
-      - TZ=Europe/London
+      - TZ=America/Boise
     volumes:
       - /nfs/heimdall/config:/config
     ports:

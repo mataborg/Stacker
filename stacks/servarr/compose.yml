@@ -8,7 +8,7 @@ services:
       - PUID=13002
       - PGID=13000
       - UMASK=002
-      - TZ=Europe/London
+      - TZ=America/Boise
       - DOCKER_MODS=linuxserver/mods:radarr-striptracks
     volumes:
       - /arr:/data
@@ -22,7 +22,7 @@ services:
       - PUID=13001
       - PGID=13000
       - UMASK=002
-      - TZ=Europe/London
+      - TZ=America/Boise
       - DOCKER_MODS=linuxserver/mods:radarr-striptracks
     volumes:
       - /arr:/data
@@ -37,7 +37,7 @@ services:
   #     - PUID=13003
   #     - PGID=13000
   #     - UMASK=002
-  #     - TZ=Europe/London
+  #     - TZ=America/Boise
   #   volumes:
   #     - /arr:/data
   #     - lidarr:/config
@@ -51,7 +51,7 @@ services:
       - PUID=13004
       - PGID=13000
       - UMASK=002
-      - TZ=Europe/London
+      - TZ=America/Boise
     volumes:
       - /arr:/data
       - readarr:/config
@@ -63,7 +63,7 @@ services:
     environment:
       - PUID=13005
       - PGID=13000
-      - TZ=Europe/London
+      - TZ=America/Boise
     volumes:
       - /nfs/overseerr/config:/config
     ports:
@@ -76,7 +76,7 @@ services:
   #     - PUID=13006
   #     - PGID=13000
   #     - UMASK=002
-  #     - TZ=Europe/London
+  #     - TZ=America/Boise
   #   volumes:
   #     - /nfs/prowlarr/config:/config
   #   ports:
@@ -89,7 +89,7 @@ services:
       - PUID=13007
       - PGID=13000
       - UMASK=002
-      - TZ=Europe/London
+      - TZ=America/Boise
       - WEBUI_PORT=20909
     volumes:
       - /nfs/qbittorrent/config:/config
@@ -105,7 +105,7 @@ services:
       - PUID=13009
       - PGID=13000
       - UMASK=002
-      - TZ=Europe/London
+      - TZ=America/Boise
     volumes:
       - /nfs/sabnzbd/config:/config
       - /arr/usenet:/data/usenet

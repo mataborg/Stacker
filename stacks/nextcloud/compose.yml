@@ -14,7 +14,7 @@ services:
       - MYSQL_USER=nextcloud
       - PUID=14002
       - PGID=14000
-      - TZ=Europe/London
+      - TZ=America/Boise
     volumes:
       - /nfs/mariadbnextcloud/config:/config
 
@@ -31,7 +31,7 @@ services:
       - MYSQL_HOST=db
       - PUID=14001
       - PGID=14000
-      - TZ=Europe/London
+      - TZ=America/Boise
       - DOCKER_MODS=linuxserver/mods:universal-package-install
       - INSTALL_PACKAGES=samba-client
       - NEXTCLOUD_TRUSTED_DOMAINS='nextcloud.local.zenbasedtea.xyz','192.168.2.18'

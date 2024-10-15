@@ -14,7 +14,7 @@ services:
       - MYSQL_USER=vaultwarden
       - PUID=15002
       - PGID=15000
-      - TZ=Europe/London
+      - TZ=America/Boise
     volumes:
       - /nfs/mariadbvtwn/config:/config
     restart: unless-stopped
@@ -32,7 +32,7 @@ services:
       - DATABASE_URL_FILE=/run/secrets/vaultwardendb_url
       - PUID=15001
       - PGID=15000
-      - TZ=Europe/London
+      - TZ=America/Boise
       - DOMAIN_FILE=/run/secrets/vaultwarden_domain
       - SMTP_HOST=smtp.gmail.com
       - SMTP_FROM_FILE=/run/secrets/smtp_username

@@ -38,6 +38,57 @@ services:
       - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.local.zenbasedtea.xyz"
       - "traefik.http.routers.traefik-secure.service=api@internal"
 
+  omada:
+    image: mbentley/omada-controller:latest
+    ulimits:
+      nofile:
+        soft: 4096
+        hard: 8192
+    stop_grace_period: 60s
+    network_mode: host
+    environment:
+      - PUID=12001
+      - PGID=12000
+      - MANAGE_HTTP_PORT=8088
+      - MANAGE_HTTPS_PORT=8043
+      - PORTAL_HTTP_PORT=8088
+      - PORTAL_HTTPS_PORT=8843
+      - PORT_APP_DISCOVERY=27001
+      - PORT_ADOPT_V1=29812
+      - PORT_UPGRADE_V1=29813
+      - PORT_MANAGER_V1=29811
+      - PORT_MANAGER_V2=29814
+      - PORT_DISCOVERY=29810
+      - PORT_TRANSFER_V2=29815
+      - PORT_RTTY=29816
+      - SHOW_SERVER_LOGS=true
+      - SHOW_MONGODB_LOGS=false
+      - SSL_CERT_NAME=tls.crt
+      - SSL_KEY_NAME=tls.key
+      - TZ=America/Boise
+    volumes:
+      - omada-data:/opt/tplink/EAPController/data
+      - omada-logs:/opt/tplink/EAPController/logs
+    ports:
+
+  # orbital-sync:
+  #   image: mattwebbio/orbital-sync:1
+  #   environment:
+  #     PRIMARY_HOST_BASE_URL: 'https://pihole1.example.com'
+  #     PRIMARY_HOST_PASSWORD: 'your_password1'
+  #     SECONDARY_HOSTS_1_BASE_URL: 'https://pihole2.example.com'
+  #     SECONDARY_HOSTS_1_PASSWORD: 'your_password2'
+  #     SECONDARY_HOSTS_2_BASE_URL: 'http://192.168.1.3'
+  #     SECONDARY_HOSTS_2_PASSWORD: 'your_password3'
+  #     SECONDARY_HOSTS_3_BASE_URL: 'http://server:8080'
+  #     SECONDARY_HOSTS_3_PASSWORD: 'your_password4'
+  #     SECONDARY_HOSTS_3_PATH: '/apps/pi-hole'
+  #     INTERVAL_MINUTES: 60
+
+volumes:
+  omada-data:
+  omada-logs:
+
 secrets:
   traefik_token:
     external: true
