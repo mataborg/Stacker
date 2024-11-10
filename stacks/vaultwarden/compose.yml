@@ -17,7 +17,6 @@ services:
       - TZ=America/Boise
     volumes:
       - /nfs/mariadbvtwn/config:/config
-    restart: unless-stopped
 
   app:
     image: vaultwarden/server:latest
@@ -45,7 +44,6 @@ services:
       - /nfs/vaultwarden/config:/config
     ports:
       - 10035:80
-    restart: unless-stopped
 
 volumes:
   vaultwarden:
