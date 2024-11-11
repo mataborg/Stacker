@@ -26,7 +26,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
       - "traefik.http.routers.traefik.rule=Host(`traefik-dashboard.local.zenbasedtea.xyz`)"
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$2y$05$EsxdcK15lVaTVZbgjWDd3ezja0tFvb24TwnL6qWYs9YVifApKZkZq"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$2y$$05$$EsxdcK15lVaTVZbgjWDd3ezja0tFvb24TwnL6qWYs9YVifApKZkZq"
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
