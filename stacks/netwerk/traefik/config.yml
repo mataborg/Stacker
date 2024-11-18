@@ -203,6 +203,16 @@ http:
       tls: {}
       service: spotify
 
+    omada:
+      entrypoints:
+        - "https"
+      rule: "Host(`omada.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: omada
+
   services:
 
     pve1:
@@ -323,6 +333,12 @@ http:
       loadBalancer:
         servers:
           - url: "http://192.168.2.18:10040"
+        passHostHeader: true
+
+    omada:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.2.18:8043"
         passHostHeader: true
 
   middlewares:
