@@ -21,7 +21,7 @@ services:
     ports:
       - 80:80
       - 443:443/tcp
-      - 443:443/udp 
+      - 443:443/udp
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"
@@ -84,6 +84,22 @@ services:
       - 29815:29815
       - 29816:29816
 
+  orbital-sync:
+    image: mattwebbio/orbital-sync:latest
+    secrets:
+      - pihole_primary_url
+      - pihole_primary_admin
+      - pihole_secondary_url
+      - pihole_secondary_admin
+    environment:
+      - PUID=12003
+      - PGID=12000
+      - PRIMARY_HOST_BASE_URL_FILE=/run/secrets/pihole_primary_url
+      - PRIMARY_HOST_PASSWORD_FILE=/run/secrets/pihole_primary_admin
+      - SECONDARY_HOSTS_1_BASE_URL_FILE=/run/secrets/pihole_secondary_url
+      - SECONDARY_HOSTS_1_PASSWORD_FILE=/run/secrets/pihole_secondary_admin
+      - INTERVAL_MINUTES=60
+
 volumes:
   omada-data:
   omada-logs:
@@ -93,3 +109,12 @@ secrets:
     external: true
   traefik_users:
     external: true
+  pihole_primary_url:
+    external: true
+  pihole_primary_admin:
+    external: true
+  pihole_secondary_url:
+    external: true
+  pihole_secondary_admin:
+    external: true
+
