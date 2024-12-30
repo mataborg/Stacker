@@ -59,7 +59,7 @@ services:
       - 8787:8787
   
   overseerr:
-    image: lscr.io/linuxserver/overseerr:latest
+    image: lscr.io/linuxserver/overseerr:develop
     environment:
       - PUID=13005
       - PGID=13000
