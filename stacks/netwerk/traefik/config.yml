@@ -264,13 +264,13 @@ http:
     piholelxc:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.14/admin"
+          - url: "https://192.168.2.14/admin"
         passHostHeader: true
 
     piholezero:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.16/admin"
+          - url: "https://192.168.2.16/admin"
         passHostHeader: true
 
     portainer:
