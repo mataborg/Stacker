@@ -213,6 +213,46 @@ http:
       tls: {}
       service: omada
 
+    printer:
+      entrypoints:
+        - "https"
+      rule: "Host(`printer.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: printer
+
+    envoy:
+      entrypoints:
+        - "https"
+      rule: "Host(`envoy.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: envoy
+
+#     hubitat:
+#       entrypoints:
+#         - "https"
+#       rule: "Host(`hubitat.local.zenbasedtea.xyz`)"
+#       middlewares:
+#         - default-headers
+#         - https-redirectscheme
+#       tls: {}
+#       service: hubitat
+#
+#     hass:
+#       entrypoints:
+#         - "https"
+#       rule: "Host(`hass.local.zenbasedtea.xyz`)"
+#       middlewares:
+#         - default-headers
+#         - https-redirectscheme
+#       tls: {}
+#       service: hass
+
   services:
 
     pve1:
@@ -248,7 +288,7 @@ http:
     truenas:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.15"
+          - url: "https://192.168.3.10"
         passHostHeader: true
 
     plex:
@@ -339,6 +379,18 @@ http:
       loadBalancer:
         servers:
           - url: "https://192.168.2.18:8043"
+        passHostHeader: true
+
+    printer:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.10"
+        passHostHeader: true
+
+    envoy:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.11"
         passHostHeader: true
 
   middlewares:

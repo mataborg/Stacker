@@ -99,6 +99,7 @@ services:
       - SECONDARY_HOSTS_1_BASE_URL_FILE=/run/secrets/pihole_secondary_url
       - SECONDARY_HOSTS_1_PASSWORD_FILE=/run/secrets/pihole_secondary_admin
       - INTERVAL_MINUTES=60
+      - TZ=America/Boise
 
 volumes:
   omada-data:
