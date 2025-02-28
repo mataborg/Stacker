@@ -288,7 +288,7 @@ http:
     truenas:
       loadBalancer:
         servers:
-          - url: "https://192.168.3.10"
+          - url: "https://192.168.2.15"
         passHostHeader: true
 
     plex:
@@ -379,18 +379,6 @@ http:
       loadBalancer:
         servers:
           - url: "https://192.168.2.18:8043"
-        passHostHeader: true
-
-    printer:
-      loadBalancer:
-        servers:
-          - url: "https://192.168.10.10"
-        passHostHeader: true
-
-    envoy:
-      loadBalancer:
-        servers:
-          - url: "https://192.168.10.11"
         passHostHeader: true
 
   middlewares:
