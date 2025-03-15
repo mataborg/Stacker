@@ -258,31 +258,31 @@ http:
     pve1:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.11:8006"
+          - url: "https://192.168.10.11:8006"
         passHostHeader: true
 
     piholelxc:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.14/admin"
+          - url: "https://192.168.10.14/admin"
         passHostHeader: true
 
     piholezero:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.16/admin"
+          - url: "https://192.168.10.16/admin"
         passHostHeader: true
 
     portainer:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.18:9443"
+          - url: "https://192.168.10.18:9443"
         passHostHeader: true
 
     pikvm:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.12"
+          - url: "https://192.168.10.12"
         passHostHeader: true
 
     truenas:
@@ -294,43 +294,43 @@ http:
     plex:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.19:32400"
+          - url: "http://192.168.10.19:32400"
         passHostHeader: true
 
     sabnzbd:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.18:10027"
+          - url: "http://192.168.10.18:10027"
         passHostHeader: true
 
     qbittorrent:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.18:20909"
+          - url: "http://192.168.10.18:20909"
         passHostHeader: true
 
 #    lidarr:
 #      loadBalancer:
 #        servers:
-#          - url: "http://192.168.2.18:8686"
+#          - url: "http://192.168.10.18:8686"
 #        passHostHeader: true
 
     sonarr:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.18:8989"
+          - url: "http://192.168.10.18:8989"
         passHostHeader: true
 
     radarr:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.18:7878"
+          - url: "http://192.168.10.18:7878"
         passHostHeader: true
 
     readarr:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.18:8787"
+          - url: "http://192.168.10.18:8787"
         passHostHeader: true
 
     router:
@@ -342,43 +342,55 @@ http:
     heimdall:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.18:10015"
+          - url: "https://192.168.10.18:10015"
         passHostHeader: true
 
     nextcloud:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.18:10025"
+          - url: "https://192.168.10.18:10025"
         passHostHeader: true
 
     overseerr:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.18:5055"
+          - url: "http://192.168.10.18:5055"
         passHostHeader: true
 
     vaultwarden:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.18:10035"
+          - url: "http://192.168.10.18:10035"
         passHostHeader: true
 
     fedora:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.18:9090"
+          - url: "https://192.168.10.18:9090"
         passHostHeader: true
 
     spotify:
       loadBalancer:
         servers:
-          - url: "http://192.168.2.18:10040"
+          - url: "http://192.168.10.18:10040"
         passHostHeader: true
 
     omada:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.18:8043"
+          - url: "https://192.168.10.18:8043"
+        passHostHeader: true
+
+    envoy:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.30.10"
+        passHostHeader: true
+
+    printer:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.50.10"
         passHostHeader: true
 
   middlewares:
