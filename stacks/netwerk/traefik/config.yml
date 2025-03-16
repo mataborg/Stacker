@@ -233,25 +233,25 @@ http:
       tls: {}
       service: envoy
 
-#     hubitat:
-#       entrypoints:
-#         - "https"
-#       rule: "Host(`hubitat.local.zenbasedtea.xyz`)"
-#       middlewares:
-#         - default-headers
-#         - https-redirectscheme
-#       tls: {}
-#       service: hubitat
-#
-#     hass:
-#       entrypoints:
-#         - "https"
-#       rule: "Host(`hass.local.zenbasedtea.xyz`)"
-#       middlewares:
-#         - default-headers
-#         - https-redirectscheme
-#       tls: {}
-#       service: hass
+    hubitat:
+      entrypoints:
+        - "https"
+      rule: "Host(`hubitat.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: hubitat
+
+    hass:
+      entrypoints:
+        - "https"
+      rule: "Host(`hass.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: hass
 
   services:
 
@@ -391,6 +391,18 @@ http:
       loadBalancer:
         servers:
           - url: "https://192.168.50.10"
+        passHostHeader: true
+
+    hubitat:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.10.17"
+        passHostHeader: true
+
+    hass:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.10.13:8123"
         passHostHeader: true
 
   middlewares:
