@@ -110,7 +110,6 @@ http:
         - default-headers
         - https-redirectscheme
       tls: {}
-
       service: sonarr
 
     readarr:
@@ -402,8 +401,8 @@ http:
     hass:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.13:8123/auth"
-        passHostHeader: true
+          - url: "http://192.168.10.13:8123"
+        passHostHeader: false
 
   middlewares:
 
