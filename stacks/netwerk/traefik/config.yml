@@ -402,7 +402,7 @@ http:
     hass:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.13:8123/lovelace/0"
+          - url: "http://192.168.10.13:8123/auth"
         passHostHeader: true
 
   middlewares:
