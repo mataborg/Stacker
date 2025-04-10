@@ -93,7 +93,7 @@ services:
       - PUID=12003
       - PGID=12000
       - PRIMARY_FILE=/run/secrets/pihole_primary
-      - SECONDARY_FILE=/run/secrets/pihole_secondary
+      - REPLICAS_FILE=/run/secrets/pihole_secondary
       - FULL_SYNC=true
       - RUN_GRAVITY=true
       - CRON=0 * * * *
