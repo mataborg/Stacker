@@ -293,7 +293,7 @@ http:
     plex:
       loadBalancer:
         servers:
-          - url: "http://192.168.10.19:32400/web"
+          - url: "https://192.168.10.19:32400/web"
         passHostHeader: true
 
     sabnzbd:
