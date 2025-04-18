@@ -32,8 +32,8 @@ services:
       - PUID=14001
       - PGID=14000
       - TZ=America/Boise
-#      - DOCKER_MODS=linuxserver/mods:universal-package-install
-#      - INSTALL_PACKAGES=samba-client
+      - DOCKER_MODS=linuxserver/mods:universal-package-install
+      - INSTALL_PACKAGES=samba-client
       - NEXTCLOUD_TRUSTED_DOMAINS='nextcloud.local.zenbasedtea.xyz','192.168.10.18'
     volumes:
       - /nfs/nextcloud/data:/data
