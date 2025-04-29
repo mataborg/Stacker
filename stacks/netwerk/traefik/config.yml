@@ -92,15 +92,15 @@ http:
       tls: {}
       service: qbittorrent
 
-#    lidarr:
-#      entryPoints:
-#        - "https"
-#      rule: "Host(`lidarr.local.zenbasedtea.xyz`)"
-#      middlewares:
-#        - default-headers
-#        - https-redirectscheme
-#      tls: {}
-#      service: lidarr
+    lidarr:
+      entryPoints:
+        - "https"
+      rule: "Host(`lidarr.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: lidarr
 
     sonarr:
       entryPoints:
@@ -308,11 +308,11 @@ http:
           - url: "http://192.168.10.18:20909"
         passHostHeader: true
 
-#    lidarr:
-#      loadBalancer:
-#        servers:
-#          - url: "http://192.168.10.18:8686"
-#        passHostHeader: true
+    lidarr:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.10.18:8686"
+        passHostHeader: true
 
     sonarr:
       loadBalancer:
@@ -335,7 +335,7 @@ http:
     router:
       loadBalancer:
         servers:
-          - url: "https://192.168.2.1:8443"
+          - url: "https://192.168.2.1"
         passHostHeader: true
 
     heimdall:
