@@ -377,7 +377,7 @@ http:
     omada:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.18:8843"
+          - url: "https://192.168.10.18:8043"
         passHostHeader: true
 
     envoy:

@@ -1,45 +1,7 @@
 ---
-version: '3.8'
+version: '3.9'
 
 services:
-  traefik:
-    image: traefik:latest
-    secrets:
-      - traefik_token
-      - traefik_users
-    environment:
-      - PUID=12002
-      - PGID=12000
-      - CF_API_EMAIL=logancowan@live.com
-      - CF_DNS_API_TOKEN_FILE=/run/secrets/traefik_token
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /nfs/traefik/data/traefik.yml:/traefik.yml:ro
-      - /nfs/traefik/data/acme.json:/acme.json
-      - /nfs/traefik/data/config.yml:/config.yml:ro
-    ports:
-      - 80:80
-      - 443:443/tcp
-      - 443:443/udp
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.entrypoints=http"
-      - "traefik.http.routers.traefik.rule=Host(`traefik-dashboard.local.zenbasedtea.xyz`)"
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$2y$$05$$EsxdcK15lVaTVZbgjWDd3ezja0tFvb24TwnL6qWYs9YVifApKZkZq"
-      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
-      - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
-      - "traefik.http.routers.traefik-secure.entrypoints=https"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik-dashboard.local.zenbasedtea.xyz`)"
-      - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
-      - "traefik.http.routers.traefik-secure.tls=true"
-      - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].main=local.zenbasedtea.xyz"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.local.zenbasedtea.xyz"
-      - "traefik.http.routers.traefik-secure.service=api@internal"
-
-
   omada:
     image: mbentley/omada-controller:latest-chromium
     ulimits:
@@ -83,6 +45,43 @@ services:
       - 29814:29814
       - 29815:29815
       - 29816:29816
+
+  traefik:
+    image: traefik:latest
+    secrets:
+      - traefik_token
+      - traefik_users
+    environment:
+      - PUID=12002
+      - PGID=12000
+      - CF_API_EMAIL=logancowan@live.com
+      - CF_DNS_API_TOKEN_FILE=/run/secrets/traefik_token
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /nfs/traefik/data/traefik.yml:/traefik.yml:ro
+      - /nfs/traefik/data/acme.json:/acme.json
+      - /nfs/traefik/data/config.yml:/config.yml:ro
+    ports:
+      - 80:80
+      - 443:443/tcp
+      - 443:443/udp
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.entrypoints=http"
+      - "traefik.http.routers.traefik.rule=Host(`traefik-dashboard.local.zenbasedtea.xyz`)"
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$2y$$05$$EsxdcK15lVaTVZbgjWDd3ezja0tFvb24TwnL6qWYs9YVifApKZkZq"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
+      - "traefik.http.routers.traefik-secure.entrypoints=https"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik-dashboard.local.zenbasedtea.xyz`)"
+      - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
+      - "traefik.http.routers.traefik-secure.tls=true"
+      - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].main=local.zenbasedtea.xyz"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.local.zenbasedtea.xyz"
+      - "traefik.http.routers.traefik-secure.service=api@internal"
 
   nebula-sync:
     image: ghcr.io/lovelaze/nebula-sync:latest
