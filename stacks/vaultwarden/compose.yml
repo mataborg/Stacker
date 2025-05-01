@@ -45,9 +45,9 @@ services:
     ports:
       - 10035:80
 
-volumes:
-  vaultwarden:
-  db:
+# volumes:
+#   vaultwarden:
+#   db:
 
 secrets:
   mariavwdn_root:
