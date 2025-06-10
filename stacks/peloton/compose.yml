@@ -1,0 +1,28 @@
+---
+version: '3.9'
+
+services:
+  p2g-api:
+    image: philosowaffle/peloton-to-garmin:api-stable
+    environment:
+      - TZ=America/Boise
+      - PUID=17002
+      - PGID=17000
+    volumes:
+      - /nfs/peloton/config/api/:/app/config
+      - /nfs/peloton/data:/app/data
+      - /nfs/peloton/output:/app/output
+
+  p2g-webui:
+    image: philosowaffle/peloton-to-garmin:webui-stable
+    links:
+      - p2g-api
+    environment:
+      - TZ=America/Boise
+      - P2G_CONFIG_DIRECTORY=/app/config
+      - PUID=17001
+      - PGID=17000
+    volumes:
+      - /nfs/peloton/config/webui:/app/config
+    ports:
+      - 8002:8080
