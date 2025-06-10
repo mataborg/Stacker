@@ -252,6 +252,16 @@ http:
       tls: {}
       service: hass
 
+    peloton:
+      entrypoints:
+        - "https"
+      rule: "Host(`peloton.local.zenbasedtea.xyz`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: peloton
+
   services:
 
     pve1:
@@ -402,7 +412,13 @@ http:
       loadBalancer:
         servers:
           - url: "http://192.168.10.13:8123"
-        passHostHeader: false
+        passHostHeader: true
+
+    peloton:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.10.18:8002"
+        passHostHeader: true
 
   middlewares:
 
