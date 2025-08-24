@@ -46,18 +46,18 @@ services:
   #     - 8686:8686
   #   restart: unless-stopped
 
-  readarr:
-    image: lscr.io/linuxserver/readarr:develop
-    environment:
-      - PUID=13004
-      - PGID=13000
-      - UMASK=002
-      - TZ=America/Boise
-    volumes:
-      - /arr:/data
-      - readarr:/config
-    ports:
-      - 8787:8787
+  # readarr:
+  #   image: lscr.io/linuxserver/readarr:develop
+  #   environment:
+  #     - PUID=13004
+  #     - PGID=13000
+  #     - UMASK=002
+  #     - TZ=America/Boise
+  #   volumes:
+  #     - /arr:/data
+  #     - readarr:/config
+  #   ports:
+  #     - 8787:8787
   
   overseerr:
     image: lscr.io/linuxserver/overseerr:develop
