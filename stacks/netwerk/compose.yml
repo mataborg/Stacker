@@ -3,7 +3,7 @@ version: '3.9'
 
 services:
   omada:
-    image: mbentley/omada-controller:latest-chromium
+    image: mbentley/omada-controller:6
     ulimits:
       nofile:
         soft: 4096
