@@ -23,6 +23,7 @@ services:
       - PORT_MANAGER_V2=29814
       - PORT_DISCOVERY=29810
       - PORT_TRANSFER_V2=29815
+      - PORT_DEVICE_MONITOR=29817
       - PORT_RTTY=29816
       - SHOW_SERVER_LOGS=true
       - SHOW_MONGODB_LOGS=false
@@ -45,6 +46,7 @@ services:
       - 29814:29814
       - 29815:29815
       - 29816:29816
+      - 29817:29817
 
   traefik:
     image: traefik:latest
