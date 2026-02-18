@@ -17,6 +17,8 @@ services:
       - TZ=America/Boise
     volumes:
       - /nfs/mariadbnextcloud/config:/config
+    ports:
+      - 3306:3306
 
   app:
     image: lscr.io/linuxserver/nextcloud:latest
@@ -40,10 +42,6 @@ services:
       - /nfs/nextcloud/config:/config
     ports:
       - 10025:443
-
-# volumes:
-#   nextcloud:
-#   db:
 
 secrets:
   marianextcloud_root:
