@@ -45,10 +45,6 @@ services:
     ports:
       - 10035:80
 
-# volumes:
-#   vaultwarden:
-#   db:
-
 secrets:
   mariavwdn_root:
      external: true

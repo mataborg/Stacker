@@ -59,14 +59,14 @@ services:
   #   ports:
   #     - 8787:8787
   
-  overseerr:
-    image: lscr.io/linuxserver/overseerr:develop
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
     environment:
       - PUID=13005
       - PGID=13000
       - TZ=America/Boise
     volumes:
-      - /nfs/overseerr/config:/config
+      - /nfs/seerr/config:/config
     ports:
       - 5055:5055
 
