@@ -66,7 +66,7 @@ services:
       - PGID=13000
       - TZ=America/Boise
     volumes:
-      - /nfs/seerr/config:/config
+      - /nfs/seerr/config:/app/config
     ports:
       - 5055:5055
 
