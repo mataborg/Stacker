@@ -27,6 +27,7 @@ services:
       - FILE__SPOTIFY_PUBLIC=/run/secrets/your_spotify_public
       - FILE__SPOTIFY_SECRET=/run/secrets/your_spotify_secret
       - MONGO_ENDPOINT=mongodb://db:27017/your_spotify
+      - SPOTIFY_API_DELAY_MS=2000
     ports:
       - 10040:80
       - 10041:443
