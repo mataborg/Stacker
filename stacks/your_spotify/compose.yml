@@ -3,7 +3,7 @@ version: '3.9'
 
 services:
   db:
-    image: mongo:latest
+    image: mongo:8
     environment:
       - PUID=16002
       - PGID=16000
