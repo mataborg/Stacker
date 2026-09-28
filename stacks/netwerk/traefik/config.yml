@@ -295,7 +295,7 @@ http:
     arcane:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.18:3552"
+          - url: "http://192.168.10.18:3552"
         passHostHeader: true
 
     pikvm:
