@@ -277,7 +277,7 @@ http:
     pve1:
       loadBalancer:
         servers:
-          - url: "https://192.168.10.11:8006"
+          - url: "https://192.168.2.11:8006"
         passHostHeader: true
 
     piholelxc:
